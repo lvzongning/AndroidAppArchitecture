@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion Integer.parseInt(project.COMPILE_SDK_VERSION)
+    buildToolsVersion project.BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(project.MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(project.TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+
+    /**
+     * https://github.com/franmontiel/PersistentCookieJar
+     *  A persistent CookieJar implementation for OkHttp 3 based on SharedPreferences.
+     */
+    //compile 'com.github.franmontiel:PersistentCookieJar:v0.9.3'
+    /**
+     * https://github.com/jianghejie/XRecyclerView#fork-destination-box
+     *  a RecyclerView that implements pullrefresh and loadingmore featrues.you can use it like a standard RecyclerView
+     */
+    compile 'com.jcodecraeer:xrecyclerview:1.2.7'
+    /**
+     * https://github.com/fengjundev/Android-Skin-Loader
+     * Android主题换肤 无缝切换 => http://www.jianshu.com/p/af7c0585dd5b
+     *  一个通过动态加载本地皮肤包进行换肤的皮肤框架
+     */
+}
